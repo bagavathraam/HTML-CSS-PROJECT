@@ -331,6 +331,10 @@ h3:hover{
     text-indent: 135px;
     color: sandybrown;
 }
+#logout{
+    color: black;
+    margin-left: 30px;
+}
 
 
 </style>
@@ -344,7 +348,7 @@ h3:hover{
 <a style="color: black;" href="bedroom.html">bedrooms</a>
 <a style="color: black;word-spacing: 1px;" href="newarrivals.html">new arrivals</a>
 <a style="color: black;" href="sale.html">sale</a></div>
-<br><div class="rt"><img class="rtm" src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG-Picture.png" alt="" style="height: 20px;"><a id="welcome" style="color: black;" href="login.html">log in</a> <a style="color: black;" href="">cart(0)</a></div>
+<br><div class="rt"><img class="rtm" src="https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG-Picture.png" alt="" style="height: 20px;"><a id="welcome" style="color: black;" href="login.html">log in</a> <a style="color: black;" href="">cart(0)</a><br><a onclick="logout()" id="logout" href="">logout</a></div>
 
     <div class="d3">
     <h1>Naturally Made</h1>
@@ -411,9 +415,25 @@ h3:hover{
    </body>
 <script>
 
+    const currentUser = localStorage.getItem("currentUser");
+
+    const welcome = document.getElementById("welcome");
+
+    if (currentUser) {
+        welcome.textContent =  currentUser; 
+    }
+    else{
+        window.location.href="index.html";
+    }
+
+    function logout() {
+        //    localStorage.removeItem(username); // Remove user data
+            localStorage.removeItem('currentUser'); // Clear 'currentUser' key -->
+            window.location.href = 'index.html'; // Redirect to login page
+        }
+
+
 </script>
-
-
 </html>
 
 
